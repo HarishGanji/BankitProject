@@ -1,0 +1,30 @@
+server:
+  port: 8069
+  servlet:
+    context-path: /bankingapplication
+spring:
+  application:
+    name: bankingapplication-service
+  profiles:
+    active: local
+
+
+
+
+
+#server:
+#  port: 8095
+#  servlet:
+#    context-path: /bankingapplication
+#
+#spring:
+#  application:
+#    name: bankingapplication-service
+#  profiles:
+#    active: local  # Ensure this profile exists
+#
+#springdoc:
+#  api-docs:
+#    path: /v3/api-docs
+#  swagger-ui:
+#    path: /swagger-ui.html

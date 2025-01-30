@@ -1,0 +1,72 @@
+server:
+  port: 8069
+  servlet:
+    context-path: /bankingapplication
+
+spring:
+  application:
+    name: bankingapplication-service
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/Bankit?createDatabaseIfNotExist=true
+    username: postgres
+    password: 1234
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+      naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+    properties:
+      hibernate:
+        database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+
+  main:
+    web-application-type: servlet
+
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    operations-sorter: alpha
+  api-docs:
+    path: /v3/api-docs
+
+
+
+
+#server:
+#  port: 8095  # Ensure no conflict with another service
+#
+#spring:
+#  application:
+#    name: bankingapplication-service
+#  datasource:
+#    url: jdbc:postgresql://localhost:5432/Bankit?createDatabaseIfNotExist=true
+#    username: postgres
+#    password: 1234
+#    driver-class-name: org.postgresql.Driver
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
+#      naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+#    properties:
+#      hibernate:
+#        database-platform: org.hibernate.dialect.PostgreSQLDialect
+#    show-sql: true
+#
+#  servlet:
+#    multipart:
+#      max-file-size: 10MB
+#      max-request-size: 10MB
+#
+#springdoc:
+#  api-docs:
+#    path: /v3/api-docs
+#  swagger-ui:
+#    path: /swagger-ui.html
