@@ -1,5 +1,6 @@
 package com.bankit.application.serviceimplementation;
 
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +33,32 @@ public class AccountServiceImplementation implements AccountService {
 
 	@Override
 	public Account getAccountById(UUID accountId) {
-		return accRepo.findById(accountId).orElseThrow(null);
+		return accRepo.getAccountId(accountId);
+	}
+
+	@Override
+	public Account deposit(UUID accountId, double amount) {
+		Account account = accRepo.getAccountId(accountId);
+		if (account != null) {
+			account.setBalance(account.getBalance() + amount);
+			accRepo.save(account);
+		}
+		return account;
+	}
+
+	@Override
+	public Account withdraw(UUID accountId, double amount) {
+		Account account = accRepo.getAccountId(accountId);
+		if (account != null && account.getBalance() > amount) {
+			account.setBalance(account.getBalance() - amount);
+			accRepo.save(account);
+		}
+		return account;
+	}
+
+	@Override
+	public List<Account> getAll() {
+		return accRepo.getAll();
 	}
 
 }
